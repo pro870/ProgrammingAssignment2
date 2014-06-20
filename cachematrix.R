@@ -2,14 +2,14 @@
 ## function that cache a matrix
 
 makeCacheMatrix <- function(x = matrix()) {
-        m <- NULL
+        s <- NULL
         set <- function(y) {
-                x <<- y
-                m <<- NULL
+                x <<- y             #uses the special operator
+                s <<- NULL
         }
         get <- function() x
-        setmatinverse <- function(solve) m <<- solve
-        getmatinverse <- function() m
+        setmatinverse <- function(solve) s <<- solve
+        getmatinverse <- function() s
         list(set = set, get = get,
              setmatinverse = setmatinverse,
              getmatinverse = getmatinverse)
@@ -17,16 +17,16 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 
-## Return a matrix that is the inverse of 'x'
+## Return a matrix that is the inverse of the matrix
 
 cacheSolve <- function(x, ...) {
-        m <- x$getmatinverse()
-        if(!is.null(m)) {
+        s <- x$getmatinverse()
+        if(!is.null(s)) {    #if the object is solved it return the cache matrix
                 message("getting cached matrix")
-                return(m)
+                return(s)
         }
         data <- x$get()
-        m <- solve(data, ...)
-        x$setmatinverse(m)
-        m
+        s <- solve(data, ...)
+        x$setmatinverse(s)
+        s
 }
