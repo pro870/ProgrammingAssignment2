@@ -22,7 +22,7 @@ cacheSolve <- function(x, ...) {
         
         s <- x$getmatinverse()           # as describe on top, this checks for the variable m if its NULL or not
         if(!is.null(s)) {
-                message("getting cached matrix =)")   
+                message("getting cached matrix, kudos to me =)")   
                 return(s)                         # if not, it return the cache matrix
         }
         data <- x$get()
